@@ -18,7 +18,7 @@ function Products({products}) {
             </thead>
             <tbody >
                 {products.map((product) => (
-                    <Product key={product.id} Product={product}/>
+                    <Product key={product.id} Product={product} onDelete={deleteProduct}/>
                 ))}
             </tbody>
         </table>

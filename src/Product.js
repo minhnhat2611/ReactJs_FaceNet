@@ -14,14 +14,12 @@ function Product({Product}) {
         <td>{Product.stock}</td>
         <td>{Product.brand}</td>
         <td className='actions'>
-          <Button handle={handleDelete} title="Delete"/>
+          <Button handle={() => {onDelete(Product.id)}} title="Delete"/>
           <Button handle={()=> ShowPopup(true)} title="Edit"/>
         </td>
-        <Popup Props={Product} trigger={buttonPopup} Return={ShowPopup}/>
+        <Popup Props={Product} trigger={buttonPopup} setTrigger={setButtonPopup} Return={ShowPopup}/>
       </tr>
   )
 }
-function handleDelete() {
-  alert("Đã xóa");
-}
+
 export default Product
