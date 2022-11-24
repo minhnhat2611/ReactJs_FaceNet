@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from './Button'
 import './Product.css'
-import Popup from './Popup';
+import Popup from './Component/Popup';
 
 function Product({Product}) {
 
