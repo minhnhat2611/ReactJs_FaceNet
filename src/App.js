@@ -1,37 +1,25 @@
-import React,{useEffect, useState } from 'react';
 import './App.css';
-import Products from './Products';
-import {Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Listing from './Listing';
+import Create from './Create';
+import Detail from './Detail';
+import Edit from './Edit';
+
 function App() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      let json = await fetch('http://localhost:5000/products');
-      json = await json.json();
-      setProducts(json);
-    }
-  
-    fetchData()
-  },[])
-  
   return (
     <div className="App">
-      <div className='header'>
-        <nav>
-          <ul>
-            <li>
-              <a href='/'>Product</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className='content'>
-      <Routes>
-        <Route path="/"element={<Products products={products}/>}/>
-      </Routes>
-      </div>
+      <h1>Product</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Listing />}></Route>
+          <Route path='/products/create' element={<Create />}></Route>
+          <Route path='/products/detail/:empid' element={<Detail />}></Route>
+          <Route path='/products/edit/:empid' element={<Edit />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
