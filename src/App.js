@@ -1,25 +1,20 @@
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Listing from './Listing';
-import Create from './Create';
-import Detail from './Detail';
-import Edit from './Edit';
-
-function App() {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import About from "./About";
+import ShowProduct from "./components/ShowProduct";
+import "./App.css";
+const App = () => {
   return (
-    <div className="App">
-      <h1>Product</h1>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Listing />}></Route>
-          <Route path='/products/create' element={<Create />}></Route>
-          <Route path='/products/detail/:empid' element={<Detail />}></Route>
-          <Route path='/products/edit/:empid' element={<Edit />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Route>
+      </Routes>
+    </Router>
   );
-
-}
+};
 
 export default App;
