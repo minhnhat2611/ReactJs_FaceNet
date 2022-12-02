@@ -71,7 +71,6 @@ function Product({ product, removeItem, item, index, setData }) {
               <label >Title: </label>
               <input
                 type="text"
-                
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -115,7 +114,6 @@ function Product({ product, removeItem, item, index, setData }) {
         </Modal>
         <ButtonCRUD
           text="Edit"
-          color="green"
           icon="edit"
           onClick={() => handleShow(product.id)}
         ></ButtonCRUD>{" "}
@@ -125,12 +123,8 @@ function Product({ product, removeItem, item, index, setData }) {
               removeItemComponent();
           }}
           text="Delete"
-          color="red"
           icon="delete"
         ></ButtonCRUD>
-        <Button onDoubleClick={() => showProduct(product.id)}>
-          Show
-        </Button>
       </td>
     </tr>
   );

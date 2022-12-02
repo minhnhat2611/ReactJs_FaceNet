@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import "../App.css";
-import Search from "./Search";
 
 const ListProduct = () => {
 
@@ -55,27 +54,13 @@ const ListProduct = () => {
     setData(newData);
   };
 
-  const searchItemName = (value) => {
-    if (value !== "") {
-      const newData = data.filter((item) =>
-        item.title.toLowerCase().includes(value.toLowerCase().trim())
-      );
-      setData(newData);
-    } else {
-      getData();
-    }
-  }
-
   return (
-    <div className="App">
-      <h1 style={{ color: "orange" }}>Product</h1>
+    <div>
       <Button
-        style={{ marginLeft: 1236 }}
-        text="Add"
-        variant="primary"
+        text="Create"
         onClick={handleShow}
       >
-        Add
+        Create
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -121,12 +106,10 @@ const ListProduct = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Search searchItemName={searchItemName} />
       <Products
         data={data}
         setData={setData}
         removeItem={handleRemove}
-        searchItemName={searchItemName}
       />
     </div>
   );

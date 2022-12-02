@@ -6,18 +6,15 @@ function Products({ data, setData, removeItem, searchItemName }) {
 
   return (
     <div >
-      <table
-        width="100%"
-        className="table-striped table-bordered text-center mt-5"
-      >
+      <table border="solid 1px">
         <thead>
           <tr>
-            <th width="5%">ID</th>
-            <th width="25%">Title</th>
-            <th width="10%">Price</th>
-            <th width="10%">Stock</th>
-            <th width="20%">Brand</th>
-            <th width="30%">Action</th>
+            <th >ID</th>
+            <th >Title</th>
+            <th >Price</th>
+            <th >Stock</th>
+            <th >Brand</th>
+            <th >Action</th>
           </tr>
         </thead>
         <tbody>
