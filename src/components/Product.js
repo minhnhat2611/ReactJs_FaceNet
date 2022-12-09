@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ButtonCRUD from "./ButtonCRUD";
+import ButtonCRUD from "./Button";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -27,7 +27,7 @@ function Product({ product, removeItem, item, index, setData }) {
 
     };
 
-    await fetch(`http://localhost:5000/currentData/${id}`, {
+    await fetch(`http://localhost:5000/product/${id}`, {
       method: "PUT",
       body: JSON.stringify(newData),
       headers: {
@@ -37,7 +37,7 @@ function Product({ product, removeItem, item, index, setData }) {
 
     setShow(false);
     const getData = async function () {
-      const baseURL = "http://localhost:5000/currentData";
+      const baseURL = "http://localhost:5000/product";
       const response = await axios.get(baseURL);
       const new_data = response.data;
       setData(new_data);
@@ -48,12 +48,10 @@ function Product({ product, removeItem, item, index, setData }) {
   const removeItemComponent = () => {
     removeItem(item.id);
   }
-
   let navigate = useNavigate();
-  const showProduct = (id) => {
+  const detail = (id) => {
     navigate(`/product/${id}`);
   }
-
   return (
     <tr>
       <td>{index + 1}</td>
@@ -64,7 +62,7 @@ function Product({ product, removeItem, item, index, setData }) {
       <td>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Product</Modal.Title>
+            <Modal.Title>Edit</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div >
@@ -125,6 +123,9 @@ function Product({ product, removeItem, item, index, setData }) {
           text="Delete"
           icon="delete"
         ></ButtonCRUD>
+        <Button onDoubleClick={() => detail(product.id)}>
+          Show
+        </Button>
       </td>
     </tr>
   );

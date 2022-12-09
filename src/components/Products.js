@@ -6,6 +6,7 @@ function Products({ data, setData, removeItem, searchItemName }) {
 
   return (
     <div >
+      <input placeholder="Search" name="keyword" type="text" value={valueSearch} onChange={(e) => setValueSearch(e.target.value)}/>
       <table border="solid 1px">
         <thead>
           <tr>

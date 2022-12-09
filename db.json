@@ -1,12 +1,5 @@
 {
-  "currentData": [
-    {
-      "title": "iPhone X",
-      "price": 899,
-      "stock": 34,
-      "brand": "Appleeee",
-      "id": 2
-    },
+  "product": [
     {
       "title": "Samsung Universe 9ssad",
       "price": "1249ada",
@@ -15,11 +8,18 @@
       "id": 3
     },
     {
-      "title": "1",
+      "title": "Tất Sơn ocscho x3,14",
+      "price": "1",
+      "stock": "abc",
+      "brand": "1",
+      "id": 4
+    },
+    {
+      "title": "Tất Sơn óc chó",
       "price": "1",
       "stock": "1",
       "brand": "1",
-      "id": 7
+      "id": 5
     }
   ]
 }

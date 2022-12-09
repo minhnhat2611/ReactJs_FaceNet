@@ -1,11 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
-
 const Layout = () => {
   return (
     <>
       <div>     
               <Link  to="/"></Link>           
-             <Link to="/about"></Link>    
+             <Link to="/chitiet"></Link>    
       </div>
       <Outlet />
     </>

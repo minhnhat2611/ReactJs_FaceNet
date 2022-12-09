@@ -1,5 +1,5 @@
 import React from 'react'
-import ListProduct from './components/ListProduct'
+import ListProduct from './components/show'
 
 function Home() {
     return (

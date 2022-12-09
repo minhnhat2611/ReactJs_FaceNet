@@ -3,8 +3,7 @@ import Products from "./Products";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
-import "../App.css";
+import Search from "./Search";
 
 const ListProduct = () => {
 
@@ -19,7 +18,7 @@ const ListProduct = () => {
   const handleShow = () => setShow(true);
 
   const getData = async function () {
-    const baseURL = "http://localhost:5000/currentData";
+    const baseURL = "http://localhost:5000/product";
     const response = await axios.get(baseURL);
     const new_data = response.data;
     setData(new_data);
@@ -31,7 +30,7 @@ const ListProduct = () => {
 
   const handleSave = async (id) => {
       const newData = { title: title, price: price, stock: stock, brand: brand };
-      await fetch("http://localhost:5000/currentData/", {
+      await fetch("http://localhost:5000/product/", {
         method: "POST",
         body: JSON.stringify(newData),
         headers: {
@@ -47,13 +46,22 @@ const ListProduct = () => {
   };
 
   const handleRemove = async (id) => {
-    await fetch(`http://localhost:5000/currentData/${id}`, {
+    await fetch(`http://localhost:5000/product/${id}`, {
       method: "DELETE",
     });
     const newData = data.filter((item) => item.id !== id);
     setData(newData);
   };
-
+  const searchItemName = (value) => {
+    if (value !== "") {
+      const newData = data.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase().trim())
+      );
+      setData(newData);
+    } else {
+      getData();
+    }
+  }
   return (
     <div>
       <Button
@@ -65,7 +73,7 @@ const ListProduct = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Product</Modal.Title>
+          <Modal.Title>Create</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
@@ -106,10 +114,12 @@ const ListProduct = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <Search searchItemName={searchItemName} />
       <Products
         data={data}
         setData={setData}
         removeItem={handleRemove}
+        searchItemName={searchItemName}
       />
     </div>
   );
